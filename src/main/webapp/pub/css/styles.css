@@ -1,0 +1,129 @@
+/* Index & General */
+nav a {
+    font-size: 18pt;
+    align-items: center;
+}
+
+.nav-item {
+    color: black;
+}
+
+h1,
+.home-carousel h5 {
+    text-align: center;
+    color: white;
+    text-shadow: 1px 1px 2px black;
+}
+
+#quiz {
+    color: #BECC9C;
+}
+
+.intro {
+    background-image: url(/pub/images/bar-bg-1.jpg);
+    background-repeat: no-repeat;
+    height: 500px;
+}
+
+body {
+    background-image: url(/pub/images/dark-bg.jpg);
+    background-repeat: repeat-y;
+}
+
+nav {
+    background: rgb(0, 0, 0);
+    background: linear-gradient(0deg, rgba(0, 0, 0, 1) 0%, rgba(103, 96, 96, 1) 22%, rgba(237, 242, 244, 1) 100%);
+}
+
+
+/* Profile Page */
+.profile-main {
+    background-color: rgb(255, 255, 255);
+}
+
+.profile-main h1 {
+    color: black;
+}
+
+.profile-main p {
+    font-size: 20pt;
+}
+
+.profile-userinfo table {
+    width: 400px;
+    font-size: 16pt;
+}
+
+.profile-header {
+    padding-right: 7%;
+    padding-left: 3%
+}
+
+.profile-teams h5 {
+    color: rgb(223, 189, 118);
+    font-size: 18pt;
+    text-shadow: 2px .5px 1px black;
+}
+
+.profile-recent a, .profile-trivia a {
+    color: black;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.profile-recent a:hover, .profile-trivia a:hover {
+    color: #263B80
+}
+
+.profile-recent .placement {
+    text-align: center;
+}
+
+
+/* Login/Register */
+.signin-main,
+.register-main {
+    background-color: rgb(255, 255, 255);
+}
+
+.signin-main h1,
+.register-main h1 {
+    color: black;
+}
+
+.register-main #lightText {
+    color: rgb(145, 144, 144);
+    font-size: smaller;
+}
+
+/* Teams */
+.teams-main h5 {
+    color: black;
+    text-shadow: 0 0 0 black;
+}
+
+
+
+
+
+
+/* Trivia List */
+.trivia-host {
+    background: rgb(255, 255, 255);
+    background: radial-gradient(circle, rgba(255, 255, 255, 1) 0%, rgba(208, 224, 222, 1) 60%);
+    
+}
+
+.trivia-head {
+    background: rgb(255, 255, 255);
+    background: radial-gradient(circle, rgba(208, 224, 222, 1)  0%,  rgba(190, 204, 156, 1) 60%);
+    border-radius: 60%;
+}
+
+.trivia-head h1 {
+    font-family: 'Sedgwick Ave Display', cursive;
+    font-size: 44pt;
+    color: #1c3179;
+    text-shadow: 2px .5px 1px black;
+
+}

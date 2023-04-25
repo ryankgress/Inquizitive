@@ -6,7 +6,7 @@
     </div>
 </section>
 
-<section class="pt-5 pb-5 bg-bisque">
+<section class="pt-5 pb-5 text-white">
     <div class="container">
         <c:if test="${not empty requestUrl}">
             <p>${requestUrl}</p>
@@ -27,5 +27,14 @@
         </c:if>
     </div>
 </section>
+
+<style>
+    .Footer {
+        position:fixed;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+    }
+</style>
 
 <jsp:include page="../include/footer.jsp" />
