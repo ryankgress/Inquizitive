@@ -98,11 +98,14 @@ public class MainController {
 
         List<TriviaDetail> myTrivias = triviaDetailDao.getActiveTriviaByHostId(user.getId());
 
+        List<Map<String,Object>> recentStandings = userDao.getRecentResults(user.getId());
+
 
         response.addObject("teams", teams);
         response.addObject("user", user);
         response.addObject("totScore", totScore);
         response.addObject("myTrivias", myTrivias);
+        response.addObject("recentStandings", recentStandings);
 
         return response;
     }
