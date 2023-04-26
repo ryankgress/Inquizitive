@@ -140,9 +140,10 @@ public class MainController {
         log.debug("In edit profile controller method");
 
         List<Map<String,Object>> recentStandings = userDao.getRecentResults(user.getId());
+        List<Map<String,Object>> teams = teamMemberDao.getTeamsByUserId(user.getId());
 
 
-
+        response.addObject("teams", teams);
         response.addObject("recentStandings", recentStandings);
 
         return response;

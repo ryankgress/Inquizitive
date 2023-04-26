@@ -139,31 +139,28 @@
                 console.log("Not empty");
         </script>
 
-
         <!-- Team Info -->
         <section>
             <h1>Your Teams</h1>
-            <div class="profile-teams container d-flex mt-2 justify-content-evenly flex-wrap">
-                <div class="card text-center mb-3" style="width: 18rem;">
-                    <img src="/pub/images/team-logo.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Quiz Tigers</h5>
-                        <p class="card-text">Ferocious in the jungle and the quiz field. They're grrrreat!</p>
-                        <a href="#" class="btn btn-dark">Team Page</a>
+            <div class="profile-teams container d-flex mt-4 justify-content-evenly flex-wrap">
+                <c:forEach items="${teams}" var="team">
+                    <div class="card text-center mb-3" style="width: 18rem;">
+                        <img src="${team.team_pic}" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">${team.team_name}</h5>
+                            <p class="card-text">${team.team_desc}</p>
+
+                            <!-- <a href="/teams#${team.team_name}" class="btn btn-dark">Team Page</a> -->
+                        </div>
+                        <div class="card-footer d-flex justify-content-evenly">
+                            <a href="/teams#${team.team_name}" class="btn btn-dark">Team Page</a>
+                            <a href="/profile/${team.id}" class="btn btn-danger">Leave Team</a>
+                        </div>
                     </div>
-                </div>
-                <div class="card text-center mb-3" style="width: 18rem;">
-                    <img src="/pub/images/team-logo2.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Outside Spotlights.</h5>
-                        <p class="card-text">A disconnected family that unites solely to take the quizzing crown!
-                            ...
-                            Just
-                            leave motown out of it.</p>
-                        <a href="#" class="btn btn-dark">Team Page</a>
-                    </div>
-                </div>
+                </c:forEach>
+
             </div>
         </section>
+
 
         <jsp:include page="include/footer.jsp" />
