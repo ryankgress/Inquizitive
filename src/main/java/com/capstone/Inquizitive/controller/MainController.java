@@ -73,6 +73,11 @@ public class MainController {
 
         List<Map<String,Object>> recentStandings = userDao.getRecentResults(user.getId());
 
+        // For debugging
+        recentStandings.stream().forEach( st -> {
+            log.info(st.get("trivia_name").toString());
+        });
+
         response.addObject("teams", teams);
         response.addObject("user", user);
         response.addObject("totScore", totScore);
@@ -99,6 +104,8 @@ public class MainController {
         List<TriviaDetail> myTrivias = triviaDetailDao.getActiveTriviaByHostId(user.getId());
 
         List<Map<String,Object>> recentStandings = userDao.getRecentResults(user.getId());
+
+
 
 
         response.addObject("teams", teams);
@@ -133,6 +140,8 @@ public class MainController {
         log.debug("In edit profile controller method");
 
         List<Map<String,Object>> recentStandings = userDao.getRecentResults(user.getId());
+
+
 
         response.addObject("recentStandings", recentStandings);
 
