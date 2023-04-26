@@ -33,8 +33,6 @@ public class Team {
     @Column(name="team_desc", columnDefinition = "TEXT")
     private String teamDesc;
 
-    @Column(name="join_code")
-    private String joinCode;
 
     /* To Team Member */
     @ToString.Exclude

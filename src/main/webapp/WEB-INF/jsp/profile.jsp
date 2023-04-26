@@ -58,14 +58,14 @@
                     </div>
                     <div class="col profile-recent">
                         <h2 class="text-center">Recent Quizzes</h2>
-                        <table class="table table-striped">
+                        <table class="table table-striped" >
                             <thead>
                                 <tr>
                                     <th scope="col">Name</th>
                                     <th scope="col" style="text-align: center;">Placement</th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody id="recentTable">
                                 <c:forEach items="${recentStandings}" var="result">
                                     <tr>
                                         <td><a href="/trivia#heading${result.id}">${result.trivia_name}</a></td>
@@ -78,6 +78,18 @@
                 </div>
             </div>
         </section>
+
+        <script>
+            let table = document.getElementById("recentTable");
+            if(table.innerText == "") {
+                let insertStr = "<tr><td colspan='2'>No Games Reported.</td></tr>";
+                table.innerHTML += insertStr;
+                table.classList.add("text-center");
+                table.style = "font-size:14pt;";
+                console.log("Empty table");
+            } else
+                console.log("Not empty");
+        </script>
 
         <!-- Team Info -->
         <section>
