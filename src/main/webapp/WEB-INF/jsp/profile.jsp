@@ -34,8 +34,15 @@
                                 <td>${user.email}</td>
                             </tr>
                             <tr>
-                                <td><b>Home Field:</b></td>
-                                <td>Yellow Bridges, New Ken</td>
+                                <td><b>Host Account:</b></td>
+                                <td>
+                                    <sec:authorize access="hasAnyAuthority('HOST')">
+                                        Yes
+                                    </sec:authorize>
+                                    <sec:authorize access="!hasAnyAuthority('HOST')">
+                                        No
+                                    </sec:authorize>
+                                </td>
                             </tr>
                             <tr>
                                 <td><b>Total Points:</b></td>

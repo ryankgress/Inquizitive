@@ -1,4 +1,5 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
     <jsp:include page="include/header.jsp" />
 
     <!-- User Info -->
@@ -41,8 +42,15 @@
                                 <td><input type="email" id="emailInput" name="email" value="${form.email}"></td>
                             </tr>
                             <tr>
-                                <td><b>Home Field:</b></td>
-                                <td>Yellow Bridges, New Ken</td>
+                                <td><b>Host Account:</b></td>
+                                <td>
+                                    <sec:authorize access="hasAnyAuthority('HOST')">
+                                        Yes
+                                    </sec:authorize>
+                                    <sec:authorize access="!hasAnyAuthority('HOST')">
+                                        No
+                                    </sec:authorize>
+                                </td>
                             </tr>
                             <tr>
                                 <td><b>Total Points:</b></td>
