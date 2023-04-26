@@ -23,13 +23,20 @@
           aria-label="Slide 3"></button>
       </div>
       <div class="carousel-inner">
+
         <div class="carousel-item active">
           <img src="/pub/images/option-1.jpg" class="d-block w-100" alt="carousel options">
           <div class="carousel-caption d-none d-md-block">
-            <h5>New Locations Everyday</h5>
-            <p>Check out our 'Submit a Location' page to show us where you're quizzing!</p>
+            <sec:authorize access="isAuthenticated()">
+              <h5><a href="/trivia#hostSection" style="text-decoration: none; color:white">New Locations Everyday</a></h5>
+            </sec:authorize>
+            <sec:authorize access="!isAuthenticated()">
+              <h5>New Locations Everyday</h5>
+            </sec:authorize>
+            <p>Check out our Host Trivia page to show us where you're quizzing!</p>
           </div>
         </div>
+
         <div class="carousel-item">
           <img src="/pub/images/option-2.jpg" class="d-block w-100" alt="carousel options">
           <div class="carousel-caption d-none d-md-block">
@@ -42,14 +49,21 @@
             <p>See how you stand up against the top teams in the country!</p>
           </div>
         </div>
+
         <div class="carousel-item">
           <img src="/pub/images/option-3.jpg" class="d-block w-100" alt="carousel options">
           <div class="carousel-caption d-none d-md-block">
-            <h5>Find a new quizzing home</h5>
+            <sec:authorize access="isAuthenticated()">
+              <h5><a href="/trivia" style="text-decoration: none; color:white">Find a new quizzing home</a></h5>
+            </sec:authorize>
+            <sec:authorize access="!isAuthenticated()">
+              <h5>Find a new quizzing home</h5>
+            </sec:authorize>
             <p>Track down a new trivia night near you.</p>
           </div>
         </div>
       </div>
+
       <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
         data-bs-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>

@@ -132,6 +132,10 @@ public class MainController {
 
         log.debug("In edit profile controller method");
 
+        List<Map<String,Object>> recentStandings = userDao.getRecentResults(user.getId());
+
+        response.addObject("recentStandings", recentStandings);
+
         return response;
     }
 

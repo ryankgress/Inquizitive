@@ -108,7 +108,7 @@
 
             <section>
                 <div
-                    class="trivia-host container mt-3 mb-5 d-flex flex-column border border-danger border-2 rounded-3 justify-content-center text-center p-3">
+                    class="trivia-host container mt-3 mb-5 d-flex flex-column border border-danger border-2 rounded-3 justify-content-center text-center p-3" id="hostSection">
                     <div>
                         <h2>Host Your Own!</h2>
                         <p>
