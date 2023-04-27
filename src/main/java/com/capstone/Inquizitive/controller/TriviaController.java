@@ -53,6 +53,12 @@ public class TriviaController {
     @Autowired
     private TeamDAO teamDao;
 
+    /**
+     * GET mapping to display the Trivia Hub home page. Checks if the user is a HOST user to allow for access to the
+     * Create Trivia option. Gets current User data, lists of all Trivias completed and current, as well as standings
+     * for all trivias.
+     * @return trivia.jsp
+     */
     @RequestMapping(value = "/trivia", method = RequestMethod.GET)
     public ModelAndView trivialist() {
         log.debug("In the trivialist controller method");
@@ -73,8 +79,6 @@ public class TriviaController {
             }
         }
 
-
-
         response.addObject("myTeams", myTeams);
         response.addObject("isHost", isHost);
         response.addObject("activeTriviaDetailList", activeTriviaDetailList);
@@ -83,6 +87,12 @@ public class TriviaController {
         return response;
     }
 
+    /**
+     * POST mapping to handle registering to a trivia. All data is queried from the entered Team in a dropdown list on
+     * the jsp page. Adds a new entry to the results table for reporting later.
+     * @param form instance of RsvpBean, queried from the entered Team Name on the jsp page
+     * @return trivia.jsp
+     */
     @PostMapping(value = "/triviaRegister")
     public ModelAndView triviaRegister(RsvpBean form) {
         ModelAndView response = new ModelAndView("trivia");
@@ -102,9 +112,17 @@ public class TriviaController {
         return response;
     }
 
-    @PreAuthorize("hasRole('HOST')")
+    /**
+     * POST mapping to handle new Trivia creation. Can only be accessed by those with a HOST role. Will create a new
+     * trivia_details row in the database if form validation is passed.
+     * @param form instance of TriviaBean. Holds information for new trivia that's passed into trivia_details
+     * @param bindingResult holds all errors for TriviaBean form validation
+     * @return trivia.jsp
+     * @throws ParseException needed for DateTime parsing
+     */
+    @PreAuthorize("hasAuthority('HOST')")
     @RequestMapping(value = "/newTrivia", method = RequestMethod.POST)
-    public ModelAndView newTrivia(@Valid TriviaBean form, BindingResult bindingResult, HttpSession httpSession) throws IOException, ParseException {
+    public ModelAndView newTrivia(@Valid TriviaBean form, BindingResult bindingResult) throws ParseException {
         log.debug("In the register controller registerSubmit method");
         ModelAndView response = new ModelAndView("trivia");
 
@@ -132,9 +150,7 @@ public class TriviaController {
         // Date/Time Stuff
         String dateTime = form.getDate() + " " + form.getTime();
         log.debug(dateTime);
-        // This will be 04/19/2023 11:58 am (verify)
 
-        // Verify this
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm");
         Date date = sdf.parse(dateTime);
 

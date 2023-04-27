@@ -58,6 +58,11 @@ public class MainController {
     }
 
 
+    /**
+     * Handles the default GET mapping for the profile page. User info is loaded from Spring Security, while a list
+     * of teams, hosted trivias, recent rankings, and total score are drawn from their respective DAO methods.
+     * @return profile.jsp
+     */
     @RequestMapping(value = "/profile", method = RequestMethod.GET)
     public ModelAndView profile() {
         log.debug("In the profile controller method");
@@ -66,12 +71,12 @@ public class MainController {
         User user = authenticatedUserService.loadCurrentUser();
 
         List<Map<String,Object>> teams = teamMemberDao.getTeamsByUserId(user.getId());
-
-        Integer totScore = teamMemberDao.getUserTotalById(user.getId());
-
         List<TriviaDetail> myTrivias = triviaDetailDao.getActiveTriviaByHostId(user.getId());
-
         List<Map<String,Object>> recentStandings = userDao.getRecentResults(user.getId());
+        Integer totScore = teamMemberDao.getUserTotalById(user.getId());
+        if(totScore == null) {
+            totScore = 0;
+        }
 
         // For debugging
         recentStandings.stream().forEach( st -> {
@@ -86,27 +91,28 @@ public class MainController {
         return response;
     }
 
+    /**
+     * This mapping is called when selecting a team to leave from the list of your teams. Displays same info as default
+     * profile method, but accepts a team ID to leave as a parameter.
+     * @param teamId belongs to team that was selected to drop from user's team list.
+     * @return profile.jsp
+     */
     @RequestMapping(value = "/profile/{teamId}", method = RequestMethod.GET)
     public ModelAndView profileRemoveTeam(@PathVariable Integer teamId) {
         log.debug("In the profile controller method");
         ModelAndView response = new ModelAndView("profile");
 
-        Team removeTeam = teamDao.findById(teamId);
         User user = authenticatedUserService.loadCurrentUser();
-
 
         teamMemberDao.leaveTeam(user.getId(), teamId);
 
         List<Map<String,Object>> teams = teamMemberDao.getTeamsByUserId(user.getId());
-
-        Integer totScore = teamMemberDao.getUserTotalById(user.getId());
-
         List<TriviaDetail> myTrivias = triviaDetailDao.getActiveTriviaByHostId(user.getId());
-
         List<Map<String,Object>> recentStandings = userDao.getRecentResults(user.getId());
-
-
-
+        Integer totScore = teamMemberDao.getUserTotalById(user.getId());
+        if(totScore == null) {
+            totScore = 0;
+        }
 
         response.addObject("teams", teams);
         response.addObject("user", user);
@@ -117,7 +123,11 @@ public class MainController {
         return response;
     }
 
-
+    /**
+     * Navigates to the Edit User page when selected in the Profile page. The form will post to the editProfileSubmit
+     * mapping on submit.
+     * @return editProfile.jsp
+     */
     @RequestMapping(value = "/editProfile", method = RequestMethod.GET)
     public ModelAndView edit() {
         ModelAndView response = new ModelAndView("editProfile");
@@ -135,21 +145,31 @@ public class MainController {
         response.addObject("form", form);
 
         Integer userScore = teamMemberDao.getUserTotalById(user.getId());
-        response.addObject("userScore", userScore);
+        if(userScore == null) {
+            userScore = 0;
+        }
 
         log.debug("In edit profile controller method");
 
         List<Map<String,Object>> recentStandings = userDao.getRecentResults(user.getId());
         List<Map<String,Object>> teams = teamMemberDao.getTeamsByUserId(user.getId());
 
-
+        response.addObject("userScore", userScore);
         response.addObject("teams", teams);
         response.addObject("recentStandings", recentStandings);
-
 
         return response;
     }
 
+    /**
+     * POST mapping handler for the submission of User edits from the editProfile page. Tracks the current session info
+     * to allow for changing the Spring Security username of the logged-on user. Requires users unencrypted password to
+     * match database's encrypted one to properly submit
+     * @param form instance of UserBean grabbed from form. Will include results of the updated user info.
+     * @param httpSession tracks current session to change logged-in username if username is altered
+     * @param bindingResult holds any errors in form validation in the UserBean form
+     * @return editProfile.jsp if any errors are found, moves to editLanding.jsp if not
+     */
     @RequestMapping(value = "/editProfileSubmit", method = RequestMethod.POST)
     public ModelAndView editProfileSubmit(UserBean form, HttpSession httpSession, BindingResult bindingResult) throws IOException {
         log.debug("In the editProfile controller submit method");
@@ -164,7 +184,6 @@ public class MainController {
 
             return response;
         }
-
 
         File target;
 
@@ -192,14 +211,24 @@ public class MainController {
         return response;
     }
 
+    /**
+     * Simple Get Mapping to handle register page
+     * @return register.jsp
+     */
     @RequestMapping(value = "/register", method = RequestMethod.GET)
-    public ModelAndView register() {
+    public String register() {
         log.debug("In the register controller method");
-        ModelAndView response = new ModelAndView("register");
-
-        return response;
+        return "register";
     }
 
+    /**
+     * POST mapping to handle new user creation from the register page. Tracks current session to assign logged-in user
+     * info upon user creation. Tracks errors live and only submits to database upon no errors.
+     * @param form Instance of UserBean form, used to update the database with a new user
+     * @param bindingResult Holds errors from UserBean form validation
+     * @param httpSession Needed to update logged-in user with Spring Security
+     * @return register.jsp if errors in validation are found. Redirects to index.jsp if all clear
+     */
     @RequestMapping(value = "/registerSubmit", method = RequestMethod.POST)
     public ModelAndView registerSubmit(@Valid UserBean form, BindingResult bindingResult, HttpSession httpSession) throws IOException {
         log.debug("In the register controller registerSubmit method");

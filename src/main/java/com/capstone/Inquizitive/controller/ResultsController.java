@@ -44,6 +44,13 @@ public class ResultsController {
     @Autowired
     private ResultDAO resultDao;
 
+    /**
+     * GET mapping to navigate to the update trivia results form for the given Trivia ID. Passes the host user, teams
+     * signed up for the trivia, an array of Strings for database update, and the current trivia info to the jsp. Will
+     * forward to resultsSubmit on form submission
+     * @param triviaId id of the trivia to be updated, grabbed from the user's profile page
+     * @return results.jsp
+     */
     @RequestMapping(value = "/results/{triviaId}", method = RequestMethod.GET)
     public ModelAndView results(@PathVariable Integer triviaId) {
         log.debug("In the results controller method");
@@ -62,6 +69,12 @@ public class ResultsController {
         return response;
     }
 
+    /**
+     * POST mapping to handle form submission and updating the database. Assigns values to both 'placement' and 'total_score'
+     * based on standings. Also changes the active status of the trivia to 'false' when trivia is reported as completed.
+     * @param parameters holds the order of the teams' reported standings. Iterated through to assign points and standings.
+     * @return trivia.jsp
+     */
     @PostMapping(value = "/results/submit")
     public ModelAndView resultsSubmit(@RequestParam Map<String, String> parameters) {
         log.debug("In the results controller method");
@@ -74,6 +87,7 @@ public class ResultsController {
 
         TriviaDetail trivia = triviaDetailDao.findById(Integer.parseInt(parameters.get("triviaId")));
 
+        // 1st: 300, 2nd: 200, 3rd: 100. Everyone else, 0.
         int score = 300;
         for(String p : parameters.keySet()) {
             if(p.equals("name") || p.equals("triviaId")) {
@@ -94,8 +108,6 @@ public class ResultsController {
                 resultDao.save(thisEntry);
             }
         }
-
-
 
         // Marks this trivia as complete
         trivia.setActive("false");

@@ -1,8 +1,6 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
     <jsp:include page="include/header.jsp" />
-
-    <script src="../pub/js/register.js"></script>
-    <!-- Need to handle validation still. Submits no matter what now -->
+    
     <section>
         <div class="register-main container mt-3 mb-5 d-flex flex-column border border-danger border-2 rounded-3 w-50">
             <h1 class="mt-3">Create New Account</h1>

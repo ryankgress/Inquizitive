@@ -37,6 +37,11 @@ public class TeamController {
     @Autowired
     private AuthenticatedUserService authenticatedUserService;
 
+    /**
+     * GET mapping to display the Teams home page. Gets User from Spring Security and loads all teams & members for all
+     * teams in database.
+     * @return teams.jsp
+     */
     @RequestMapping(value = "/teams", method = RequestMethod.GET)
     public ModelAndView teams() {
         log.debug("In the teams controller method");
@@ -50,6 +55,10 @@ public class TeamController {
         return response;
     }
 
+    /**
+     * GET mapping to display the same Teams page, but sorts them by teams' total_score descending
+     * @return teams.jsp
+     */
     @RequestMapping(value = "/teams/score", method = RequestMethod.GET)
     public ModelAndView teamsOrderedByScore() {
         log.debug("In the teams controller method");
@@ -63,6 +72,10 @@ public class TeamController {
         return response;
     }
 
+    /**
+     * GET mapping to display the same Teams page, but sorts them by teams' name descending
+     * @return teams.jsp
+     */
     @RequestMapping(value = "/teams/name", method = RequestMethod.GET)
     public ModelAndView teamsOrderedByName() {
         log.debug("In the teams controller method");
@@ -76,6 +89,12 @@ public class TeamController {
         return response;
     }
 
+    /**
+     * GET mapping to display the Teams page after joining a team. This method is accessed by clicking the 'Join Team'
+     * button on any Teams page, then the button is updated to show that accordingly
+     * @param teamId id of the team to join. Is updated in the team_members database table
+     * @return teams.jsp
+     */
     @RequestMapping(value = "/teams/join/{teamId}", method = RequestMethod.GET)
     public ModelAndView teamsJoin(@PathVariable Integer teamId) {
         log.debug("In the teams controller method");

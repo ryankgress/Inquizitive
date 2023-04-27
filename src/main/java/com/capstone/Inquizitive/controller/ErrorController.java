@@ -13,6 +13,10 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 @ControllerAdvice
 public class ErrorController {
+    /**
+     * Handles any 404 not found error in a page with navbar and easy-to-read error reporting
+     * @return 404.jsp
+     */
     @RequestMapping(value = "/error/404")
     public String error404(HttpServletRequest request) {
 
@@ -22,6 +26,10 @@ public class ErrorController {
         return "error/404";
     }
 
+    /**
+     * Handles any 500 server error in a page with navbar and easy-to-read error reporting
+     * @return 500.jsp
+     */
     @ExceptionHandler(Exception.class)
     public ModelAndView handleAllException(HttpServletRequest request, Exception ex) {
         String requestUrl = getRequestURL(request);

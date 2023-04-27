@@ -38,7 +38,6 @@ public class User {
     @Column(name="profile_pic")
     private String profilePic;
 
-    // May need to add a boolean flag for 'quiz_master' user role or something
 
     /* To Team Member */
     @ToString.Exclude
