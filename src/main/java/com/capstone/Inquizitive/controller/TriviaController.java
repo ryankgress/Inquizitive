@@ -9,6 +9,7 @@ import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -101,6 +102,7 @@ public class TriviaController {
         return response;
     }
 
+    @PreAuthorize("hasRole('HOST')")
     @RequestMapping(value = "/newTrivia", method = RequestMethod.POST)
     public ModelAndView newTrivia(@Valid TriviaBean form, BindingResult bindingResult, HttpSession httpSession) throws IOException, ParseException {
         log.debug("In the register controller registerSubmit method");

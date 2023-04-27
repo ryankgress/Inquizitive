@@ -80,7 +80,7 @@ public class ResultsController {
                 continue;
             } else {
                 int thisTeamId = Integer.parseInt(parameters.get(p));
-                Result thisEntry = resultDao.getResultfromTeamIdAndTriviaId(thisTeamId, trivia.getId());
+                Result thisEntry = resultDao.getResultFromTeamIdAndTriviaId(thisTeamId, trivia.getId());
 
                 thisEntry.setPlacement(p);
                 if(score > 0) {

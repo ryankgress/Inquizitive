@@ -3,6 +3,10 @@
     function toRegister() {
       location.href = "/register";
     }
+
+    function toGithub() {
+      location.href = "https://github.com/ryankgress?tab=repositories";
+    }
   </script>
 
   <section class="Footer mt-5">
@@ -12,8 +16,8 @@
           <sec:authorize access="isAuthenticated()">
             <div>
               <p class="d-flex justify-content-center align-items-center">
-                <span class="me-3">Like Inquizitive? Leave us a review!</span>
-                <button type="button" class="btn btn-outline-light btn-rounded" onclick="toRegister()">
+                <span class="me-3">Like Inquizitive? Check out more from Ryan Gress</span>
+                <button type="button" class="btn btn-outline-light btn-rounded" onclick="toGithub()">
                   Take Me There
                 </button>
               </p>

@@ -5,7 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7cc2710b-c76a-4510-90aa-38f16831680e" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/capstone/Inquizitive/database/dao/ResultDAOTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/capstone/Inquizitive/controller/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/capstone/Inquizitive/controller/MainController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/capstone/Inquizitive/controller/ResultsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/capstone/Inquizitive/controller/ResultsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/capstone/Inquizitive/controller/TriviaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/capstone/Inquizitive/controller/TriviaController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/capstone/Inquizitive/database/dao/ResultDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/capstone/Inquizitive/database/dao/ResultDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/include/footer.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/include/footer.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,7 +63,7 @@
       <recent name="C:\Users\ryank\OneDrive - iup.edu\Desktop\TEK\Development\TEK-2023-Lecture\SpringBootStuff\Inquizitive\src\main\webapp\WEB-INF\jsp" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.MainApplication">
+  <component name="RunManager" selected="JUnit.ResultDAOTest">
     <configuration name="MainApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.capstone.Inquizitive.MainApplication" />
       <module name="Inquizitive" />
@@ -67,6 +73,21 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ResultDAOTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Inquizitive" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.capstone.Inquizitive.database.dao.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.capstone.Inquizitive.database.dao" />
+      <option name="MAIN_CLASS_NAME" value="com.capstone.Inquizitive.database.dao.ResultDAOTest" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -116,6 +137,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.ResultDAOTest" />
         <item itemvalue="Application.MainApplication" />
         <item itemvalue="JUnit.UserDAOTest" />
         <item itemvalue="JUnit.TeamDAOTest" />
