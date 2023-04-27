@@ -26,11 +26,14 @@
 ## Screenshots
 
 ### Trivia Hub
-![App Screenshot](https://imgur.com/cILqGKm.jpg) 
+![Trivia Hub](https://imgur.com/cILqGKm.jpg) 
 
 ### Profile Page
-![App Screenshot](https://imgur.com/PSRrk3Z.jpg) 
+![Profile Page](https://imgur.com/PSRrk3Z.jpg) 
 
 ### Teams List
-![App Screenshot](https://imgur.com/dvN5vq4.jpg) 
+![Teams List](https://imgur.com/dvN5vq4.jpg) 
+
+### ER Diagram
+![ER Diagram](https://imgur.com/910JpsC.jpg) 
 
