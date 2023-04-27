@@ -145,6 +145,7 @@ public class MainController {
 
         response.addObject("teams", teams);
         response.addObject("recentStandings", recentStandings);
+        
 
         return response;
     }
